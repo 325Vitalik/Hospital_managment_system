@@ -1,0 +1,12 @@
+E:\Bot\Hospital_managment_system\Repository\bin\Debug\netcoreapp3.1\DataBase.deps.json
+E:\Bot\Hospital_managment_system\Repository\bin\Debug\netcoreapp3.1\DataBase.dll
+E:\Bot\Hospital_managment_system\Repository\bin\Debug\netcoreapp3.1\DataBase.pdb
+E:\Bot\Hospital_managment_system\Repository\obj\Debug\netcoreapp3.1\DataBase.csprojAssemblyReference.cache
+E:\Bot\Hospital_managment_system\Repository\obj\Debug\netcoreapp3.1\DataBase.AssemblyInfoInputs.cache
+E:\Bot\Hospital_managment_system\Repository\obj\Debug\netcoreapp3.1\DataBase.AssemblyInfo.cs
+E:\Bot\Hospital_managment_system\Repository\obj\Debug\netcoreapp3.1\DataBase.dll
+E:\Bot\Hospital_managment_system\Repository\obj\Debug\netcoreapp3.1\DataBase.pdb
+E:\Bot\Hospital_managment_system\Repository\bin\Debug\netcoreapp3.1\DataBase.runtimeconfig.json
+E:\Bot\Hospital_managment_system\Repository\bin\Debug\netcoreapp3.1\DataBase.runtimeconfig.dev.json
+E:\Bot\Hospital_managment_system\Repository\obj\Debug\netcoreapp3.1\DataBase.genruntimeconfig.cache
+E:\Bot\Hospital_managment_system\Repository\obj\Debug\netcoreapp3.1\DataBase.csproj.CoreCompileInputs.cache

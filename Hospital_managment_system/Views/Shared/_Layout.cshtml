@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/static/css/style.min.css" rel="stylesheet" />
+    <link href="~/lib/trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav_item">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+            </div>
+            <div class="nav_item">
+                <a asp-controller="Profile" asp-action="Profile">Profile</a>
+            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="nav_item">
+                    <a asp-controller="Post" asp-action="CreatePost">Create Post</a>
+                </div>
+            }
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="nav_item">
+                    <a asp-controller="Auth" asp-action="SignIn">Sign in</a>
+                </div>
+            }
+            else
+            {
+                <div class="nav_item">
+                    <a asp-controller="Auth" asp-action="SignOut">Sign out</a>
+                </div>
+            }
+        </nav>
+    </div>
+    <div class="container">
+        <div class="inner_data">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

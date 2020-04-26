@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="header">
+    @ViewBag.Role: @Model.Item1.FirstName @Model.Item1.LastName
+</div>
+<div class="default_text">
+    Age: @Model.Item1.Age
+</div>
+@RenderBody()

@@ -1,0 +1,22 @@
+﻿@model LoginViewModel
+<div class="header">Login Page</div>
+
+<div class="inner_body">
+    <form asp-controller="Auth" asp-action="SignIn" method="post">
+        <div class="input_form">
+            <div>
+                <label>E-mail:</label>
+                <div class="form_input">
+                    <input type="email" placeholder="Enter Email" asp-for="Email" />
+                </div>
+            </div>
+            <div>
+                <lable>Password:</lable>
+                <div class="form_input">
+                    <input type="password" placeholder="Enter Password" asp-for="Password" />
+                </div>
+            </div>
+            <button class="default_button" type="submit">Login</button>
+        </div>
+    </form>
+</div>

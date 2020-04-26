@@ -1,0 +1,68 @@
+﻿@model Tuple<Patient, ConsultationViewModel>
+
+@{
+    ViewBag.Role = "Patient";
+    Layout = "_LayoutProfile";
+}
+
+<div>
+    <div class="default_text">
+        <h3>Diagnosis: @Model.Item1.Diagnosis</h3>
+    </div>
+    <div class="default_text">
+        <h4>Chamber: @Model.Item1.Chamber</h4>
+    </div>
+    <div class="sub_header">
+        Doctor: <a asp-controller="Profile" asp-action="DoctorProfile" asp-route-id="@Model.Item1.DoctorId">@Model.Item1.FirstName @Model.Item1.LastName</a>
+    </div>
+</div>
+
+@if (User.IsInRole("Doctor"))
+{
+    <div>
+        <form id="consultationForm">
+            <div class="input_form">
+                <div class="form_input">
+                <input placeholder="Header" style="width:100%" asp-for="@Model.Item2.Header" />
+                    </div>
+                <textarea id="editor" placeholder="Description" asp-for="@Model.Item2.Description"></textarea>
+                <input type="hidden" value="@Model.Item1.Id" asp-for="@Model.Item2.PatientId" />
+
+                <button class="default_button" id="addConsultation" type="button">Add information</button>
+            </div>
+        </form>
+    </div>
+}
+
+<h2>History:</h2>
+
+<div id="patientHistory">
+    @await Html.PartialAsync("PatientHistory", Model.Item1)
+</div>
+
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#addConsultation").on("click", function (e) {
+        e.stopPropagation();
+        var x = $("#consultationForm").serialize();
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("PatientNewConsultation", "Profile")",
+            cache: false,
+            data: x,
+            success: function (result) {
+                document.getElementById("consultationForm").reset();
+
+                $("#patientHistory").html(result);
+            }
+        });
+    });
+</script>
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/trumbowyg/dist/trumbowyg.min.js"></script>
+<script>
+    $('#editor').trumbowyg();
+</script>

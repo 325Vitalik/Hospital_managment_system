@@ -1,0 +1,19 @@
+﻿@model DoctorSignUpViewModel
+
+<div class="header">Doctor Register page</div>
+
+<form class="input_form" asp-controller="DoctorAuth" asp-action="SignUp" method="post">
+    <div class="form_input">
+        <input placeholder="Enter First name" asp-for="FirstName" />
+        <input placeholder="Enter Last Name" asp-for="LastName" />
+    </div>
+    <div class="form_input">
+        <input placeholder="Enter Age" asp-for="Age" />
+        <input placeholder="Enter Department" asp-for="Department" />
+    </div>
+    <div class="form_input">
+        <input placeholder="Enter Email" asp-for="Email" />
+        <input placeholder="Enter Password" asp-for="Password" />
+    </div>
+    <button class="default_button" type="submit">Register</button>
+</form>

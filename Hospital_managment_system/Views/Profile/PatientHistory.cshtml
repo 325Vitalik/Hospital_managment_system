@@ -1,0 +1,22 @@
+﻿@model Patient
+@{
+    Layout = null;
+
+}
+@if (Model.Consultations != null)
+{
+    <div class="patient_history_list">
+        @foreach (var consultation in Model.Consultations)
+        {
+            <div class="list_item">
+                <div class="header">
+                    @consultation.Header
+                </div>
+                <div class="default_text">
+                    @consultation.Description
+                </div>
+                <div class="small_text">@consultation.Time</div>
+            </div>
+        }
+    </div>
+}

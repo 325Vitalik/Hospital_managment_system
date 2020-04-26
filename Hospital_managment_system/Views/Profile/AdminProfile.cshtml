@@ -1,0 +1,19 @@
+﻿@model Tuple<User, IEnumerable<Doctor>>
+
+<div class="inner_data">
+    <div class="header">Admin profile</div>
+
+    <div class="sub_header">All doctors: </div>
+    <div class="sub_header">
+        <a href="/Register/Doctor">Register doctor</a>
+    </div>
+    <div>
+        @foreach (var doctor in Model.Item2)
+        {
+            <div class="list_item" onclick="location.href='@Url.Action("DoctorProfile", "Profile", new { id = @doctor.Id })'">
+                @*<a asp-controller="Profile" asp-action="DoctorProfile" asp-route-id="@doctor.Id">@doctor.FirstName @doctor.LastName</a>*@
+                <div>@doctor.FirstName @doctor.LastName</div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@model PostViewModel
+
+<div class="inner_body">
+    <form asp-controller="Post" asp-action="Post" method="post">
+        <div class="input_form">
+            <div>
+                <label>Header</label>
+                <div class="form_input">
+                    <input  style="width:100%;" placeholder="Enter Header" asp-for="Header" />
+                </div>
+            </div>
+            <div>
+                <lable>Password:</lable>
+                <div class="form_input">
+                    <textarea id="editor" placeholder="Enter Information" asp-for="Body"></textarea>
+                </div>
+            </div>
+            <button class="default_button" type="submit">Add post</button>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/trumbowyg/dist/trumbowyg.min.js"></script>
+<script>
+    $('#editor').trumbowyg();
+</script>

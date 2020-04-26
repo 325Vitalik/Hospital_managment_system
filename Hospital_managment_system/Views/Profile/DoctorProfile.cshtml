@@ -1,0 +1,67 @@
+﻿@model Tuple<Doctor, DoctorEditViewModel>
+@{
+    ViewBag.Role = "Doctor";
+    Layout = "_LayoutProfile";
+}
+
+<div class="default_text">
+    Department: @Model.Item1.Department
+</div>
+<div class="default_text">
+    About me: @Html.Raw(Model.Item1.About)
+</div>
+
+
+<div class="sub_header">Patients:</div>
+@if (User.IsInRole("Doctor"))
+{
+    <div class="sub_header">
+        <a asp-controller="PatientAuth" asp-action="SignUp">Add patient</a>
+    </div>
+}
+
+@if (User.IsInRole("Doctor") || User.IsInRole("Admin"))
+{
+    <div>
+        @foreach (var patient in Model.Item1.Patients)
+        {
+            <div class="list_item" onclick="location.href='@Url.Action("PatientProfile", "Profile", new { id=@patient.Id})'">
+                <a>@patient.FirstName @patient.LastName</a>
+            </div>
+        }
+    </div>
+}
+
+@if (User.IsInRole("Doctor") || User.IsInRole("Admin"))
+{
+    <div class="input_form">
+        <button id="editButton" onclick="editProfile()" class="default_button">Edit profile</button>
+        <div id="edit" style="display: none">
+            <form class="form_input" asp-controller="Profile" asp-action="DoctorEdit" method="post">
+                <input style="display: none" id="currentUrl" value="" asp-for="@Model.Item2.CurrentLink" />
+                <input type="hidden" value="@Model.Item1.Id" asp-for="@Model.Item2.Id" />
+                <textarea id="editor" asp-for="@Model.Item2.About"></textarea>
+                <button class="default_button" type="submit" onclick="addCurrentUrl()">Save</button>
+            </form>
+        </div>
+    </div>
+}
+
+<script>
+    function editProfile() {
+        var elem = document.getElementById("edit");
+        elem.style.display = "block";
+        document.getElementById("editButton").style.display = "none";
+    }
+
+    function addCurrentUrl() {
+        var elem = document.getElementById("currentUrl");
+        elem.setAttribute('value', window.location.href);
+    }
+</script>
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/trumbowyg/dist/trumbowyg.min.js"></script>
+<script>
+    $('#editor').trumbowyg();
+</script>

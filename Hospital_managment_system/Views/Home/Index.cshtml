@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Post>
+
+<div class="header">Best Hospital</div>
+
+<div class="default_text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus nec feugiat in fermentum posuere urna. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Tempus imperdiet nulla malesuada pellentesque elit. Non nisi est sit amet facilisis magna etiam tempor orci. Etiam erat velit scelerisque in dictum non consectetur a erat. Ullamcorper sit amet risus nullam. Diam volutpat commodo sed egestas egestas fringilla phasellus. Eget egestas purus viverra accumsan. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Imperdiet sed euismod nisi porta. Dignissim convallis aenean et tortor at risus viverra adipiscing. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Aliquam purus sit amet luctus venenatis lectus magna.
+</div>
+
+<div class="header">
+    News
+</div>
+<div class="home_page">
+    @foreach(var post in Model)
+    {
+        <div class="list_item" onclick="location.href='@Url.Action("Post", "Post", new { id = post.Id})'">
+            @post.Header
+        </div>
+    }
+</div>

@@ -1,0 +1,128 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #404040;
+}
+
+.container {
+    min-width: 470px;
+    max-width: 80%;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.navbar {
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #404040;
+}
+
+.nav_item {
+    margin: 30px 20px 20px 20px;
+
+    a {
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 30px;
+        color: #F2F2F2;
+    }
+}
+
+.inner_data {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inner_body {
+    margin: 20px 0px;
+}
+
+.header {
+    margin: 20px auto;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.sub_header {
+    margin: 10px 0px;
+}
+
+.input_form {
+    margin: auto;
+
+    .form_input {
+        margin: 0px 0px 20px 0px;
+
+        input {
+            border: 2px solid #404040;
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+        }
+
+    }
+
+    .default_button {
+        padding: 10px;
+        background-color: #404040;
+        border: none;
+        color: #F2F2F2;
+        width: 100%;
+        border: 2px solid #404040;
+        border-radius: 4px;
+    }
+
+    .default_button:hover{
+        cursor: pointer;
+    }
+}
+
+.list_item {
+    margin: 10px 0px;
+    padding: 10px;
+
+    border: 2px solid #404040;
+    border-radius: 4px;
+
+    a {
+        text-decoration: none;
+        color: #404040;
+    }
+}
+
+.list_item:hover{
+    cursor:pointer;
+}
+
+.patient_history_list {
+    .list_item:hover{
+        cursor:auto;
+    }
+}
+
+.default_text {
+    margin-top: 8px;
+    line-height: 2;
+}
+
+.small_text{
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.home_page {
+    margin: 20px 0px;
+
+    .list_item {
+        height: 50px;
+    }
+}
