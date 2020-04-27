@@ -13,6 +13,9 @@ using DataBase.Data;
 using Microsoft.AspNetCore.Identity;
 using DataBase.Models;
 using DataBase.Data.Repository;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace Hospital_managment_system
 {
@@ -58,7 +61,7 @@ namespace Hospital_managment_system
             {
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace DataBase.Models
 {
@@ -10,6 +11,7 @@ namespace DataBase.Models
         public int Chamber { get; set; }
 
         public string DoctorId { get; set; }
+
         public Doctor Doctor { get; set; }
 
         public ICollection<Consultation> Consultations { get; set; }

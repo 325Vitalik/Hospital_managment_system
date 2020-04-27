@@ -20,18 +20,18 @@ namespace Hospital_managment_system.Controllers
             this.repo = repo;
         }
 
-        [Authorize(Roles = "Admin")]
-        [Route("CreatePost")]
-        public IActionResult CreatePost()
-        {
-            return View(new PostViewModel());
-        }
-
         [HttpGet]
         public async Task<IActionResult> Post(long id)
         {
             var post = repo.GetPostByIdAsync(id);
             return View(await post);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [Route("CreatePost")]
+        public IActionResult CreatePost()
+        {
+            return View(new PostViewModel());
         }
 
         [Authorize(Roles ="Admin")]

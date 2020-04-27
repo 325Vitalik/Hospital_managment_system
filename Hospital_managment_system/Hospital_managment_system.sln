@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital_managment_system", "Hospital_managment_system.csproj", "{82647428-6CFC-4B04-9532-645E0CE46F83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hospital_managment_system", "Hospital_managment_system.csproj", "{82647428-6CFC-4B04-9532-645E0CE46F83}"
 	ProjectSection(ProjectDependencies) = postProject
 		{79F40C75-95F3-400E-A458-FB5B649F58C1} = {79F40C75-95F3-400E-A458-FB5B649F58C1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "..\Repository\DataBase.csproj", "{79F40C75-95F3-400E-A458-FB5B649F58C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "..\Repository\DataBase.csproj", "{79F40C75-95F3-400E-A458-FB5B649F58C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hospital_managment_system.Controllers
 {
+    //only doctor can add new patient
     [Authorize(Roles = "Doctor")]
     public class PatientAuthController : Controller
     {

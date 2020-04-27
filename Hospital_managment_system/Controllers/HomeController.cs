@@ -12,11 +12,9 @@ namespace Hospital_managment_system.Controllers
 {
     public class HomeController : Controller
     {
-        private UserManager<User> userMgr;
         private IRepository repo;
-        public HomeController(IRepository repo, UserManager<User> userMgr)
+        public HomeController(IRepository repo)
         {
-            this.userMgr = userMgr;
             this.repo = repo;
         }
         public IActionResult Index()

@@ -25,6 +25,7 @@ namespace Hospital_managment_system.Controllers
             this.userMgr = userMgr;
         }
 
+        //This action returns profile of current user
         public async Task<IActionResult> Profile()
         {
             var user = await repo.GetUserByUserNameAsync(User.Identity.Name);
@@ -51,6 +52,7 @@ namespace Hospital_managment_system.Controllers
             }
         }
 
+        //get profile of doctor from admin or patient role
         [HttpGet]
         public async Task<IActionResult> DoctorProfile(string id)
         {
@@ -66,6 +68,7 @@ namespace Hospital_managment_system.Controllers
             return View("DoctorProfile", new Tuple<Doctor, DoctorEditViewModel>(doctor, new DoctorEditViewModel()));
         }
 
+        //get profile of patient from doctor or admin role
         [HttpGet]
         public async Task<IActionResult> PatientProfile(string id)
         {
@@ -83,6 +86,7 @@ namespace Hospital_managment_system.Controllers
             return View("PatientProfile", new Tuple<Patient, ConsultationViewModel>(patient, new ConsultationViewModel()));
         }
 
+        //doctor can add consultation data in history of patient
         [Authorize(Roles = "Doctor")]
         [HttpPost]
         public async Task<IActionResult> PatientNewConsultation([Bind(Prefix = "Item2")]ConsultationViewModel vm)
@@ -118,6 +122,7 @@ namespace Hospital_managment_system.Controllers
             return PartialView("PatientHistory", patient);
         }
 
+        //doctor or admin can change information in property "About" of doctor
         [Authorize(Roles = "Doctor,Admin")]
         [HttpPost]
         public async Task<IActionResult> DoctorEdit([Bind(Prefix = "Item2")]DoctorEditViewModel vm)

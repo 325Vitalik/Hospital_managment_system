@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hospital_managment_system.Controllers
 {
+    //Only admin can add new doctor
     [Route("/Register/Doctor")]
     [Authorize(Roles="Admin")]
     public class DoctorAuthController : Controller

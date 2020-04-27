@@ -37,6 +37,11 @@ namespace DataBase.Data.Repository
             return ctx.Doctors.Include(d => d.Patients).ToList();
         }
 
+        public IEnumerable<Patient> GetAllPatients()
+        {
+            return ctx.Patients.Include(p => p.Doctor).Include(p => p.Consultations).ToList();
+        }
+
         public IEnumerable<Post> GetAllPosts()
         {
             return ctx.Posts.ToList();
@@ -45,6 +50,7 @@ namespace DataBase.Data.Repository
         public async Task<Doctor> GetDoctorByIdAsync(string doctorId)
         {
             var doctor = await ctx.Doctors.FirstOrDefaultAsync(d => d.Id == doctorId);
+            if (doctor == null) return null;
             ctx.Entry(doctor).Collection(d => d.Patients).Load();
             return doctor;
         }
@@ -52,6 +58,7 @@ namespace DataBase.Data.Repository
         public async Task<Doctor> GetDoctorByUserNameAsync(string userName)
         {
             var doctor = await this.ctx.Doctors.FirstOrDefaultAsync(d => d.UserName == userName);
+            if (doctor == null) return null;
             ctx.Entry(doctor).Collection(d => d.Patients).Load();
             return doctor;
         }
@@ -59,6 +66,7 @@ namespace DataBase.Data.Repository
         public async Task<Patient> GetPatientByIdAsync(string userId)
         {
             var patient = await this.ctx.Patients.FirstOrDefaultAsync(p => p.Id == userId);
+            if (patient == null) return null;
             ctx.Entry(patient).Reference(p => p.Doctor).Load();
             ctx.Entry(patient).Collection(p => p.Consultations).Load();
             return patient;

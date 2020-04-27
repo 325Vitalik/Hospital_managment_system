@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace DataBase.Models
 {
@@ -14,9 +15,11 @@ namespace DataBase.Models
         public ICollection<Drug> Drugs { get; set; }
 
         public string DoctorId { get; set; }
+        [JsonIgnore]
         public Doctor Doctor { get; set; }
 
         public string PatientId { get; set; }
+        [JsonIgnore]
         public Patient Patient { get; set; }
     }
 }

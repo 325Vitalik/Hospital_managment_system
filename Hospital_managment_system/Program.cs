@@ -39,6 +39,7 @@ namespace Hospital_managment_system
             }
             if (!ctx.Users.Any(u => u.UserName == "admin"))
             {
+                //add admin user
                 var adminUser = new User()
                 {
                     UserName = "admin@test.com",
@@ -47,6 +48,21 @@ namespace Hospital_managment_system
                 userMgr.CreateAsync(adminUser, "Password123").GetAwaiter().GetResult();
 
                 userMgr.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
+
+                //add doctor user
+                var doctor = new Doctor()
+                {
+                    FirstName = "Bob",
+                    LastName = "gates",
+                    Age = 46,
+                    Department = "Last",
+                    UserName = "doctor@test.com",
+                    Email = "doctor@test.com",
+                    Patients = new HashSet<Patient>()
+                };
+                userMgr.CreateAsync(doctor, "Password123").GetAwaiter().GetResult();
+
+                userMgr.AddToRoleAsync(adminUser, "Doctor").GetAwaiter().GetResult();
             }
 
             host.Run();

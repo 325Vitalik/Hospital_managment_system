@@ -151,7 +151,12 @@ E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3
 E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Denied.cshtml.g.cs
 E:\Bot\Hospital_managment_system\Hospital_managment_system\bin\Debug\netcoreapp3.1\libman.json
 E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Razor\Views\Profile\PatientHistory.cshtml.g.cs
-E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Hospital_managment_system.csproj.CoreCompileInputs.cache
-E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Hospital_managment_system.MvcApplicationPartsAssemblyInfo.cache
 E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Razor\Views\Post\Post.cshtml.g.cs
 E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Razor\Views\Post\CreatePost.cshtml.g.cs
+E:\Bot\Hospital_managment_system\Hospital_managment_system\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\Bot\Hospital_managment_system\Hospital_managment_system\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+E:\Bot\Hospital_managment_system\Hospital_managment_system\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+E:\Bot\Hospital_managment_system\Hospital_managment_system\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\Bot\Hospital_managment_system\Hospital_managment_system\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Hospital_managment_system.csproj.CoreCompileInputs.cache
+E:\Bot\Hospital_managment_system\Hospital_managment_system\obj\Debug\netcoreapp3.1\Hospital_managment_system.MvcApplicationPartsAssemblyInfo.cache

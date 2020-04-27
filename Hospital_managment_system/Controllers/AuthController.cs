@@ -23,6 +23,7 @@ namespace Hospital_managment_system.Controllers
             this.repo = repo;
         }
 
+        //Logining
         [HttpGet]
         public IActionResult SignIn()
         {
