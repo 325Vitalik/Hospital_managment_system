@@ -5,12 +5,11 @@
     {
       "library": "jquery@3.4.1",
       "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "trumbowyg@2.21.0",
+      "destination": "wwwroot/lib/trumbowyg/"
     }
-  ,
-{
-  "provider": "unpkg",
-  "library": "trumbowyg@2.21.0",
-  "destination": "wwwroot/lib/trumbowyg/"
-}
-]
+  ]
 }
