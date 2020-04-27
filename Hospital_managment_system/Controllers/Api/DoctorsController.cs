@@ -64,7 +64,7 @@ namespace Hospital_managment_system.Controllers.Api
             return JsonSerializer.CreateJson(doctor);
         }
 
-        // POST: api/Doctors
+        // POST: api/Doctors/AddPatient/{email}/{password}
         // returns message if action is successful
         [Route("AddPatient/{email}/{password}")]
         [HttpPost]
