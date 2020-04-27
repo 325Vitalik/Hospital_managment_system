@@ -63,7 +63,7 @@ GET: {localhost}/api/Patients/ById/{id}
 GET: {localhost}/api/Patients/ByUserName/{username}
 ```
 
-#Own instance
+# Own instance
 0. Запустіть Hospital_managment_system/Hospital_managment_systemю.sln
 1. В файлі appsettings.json вставте строку підключення до MS SQL Server.
 2. З проекту DataBase в консолі диспетчера пакетів виконайте Update-Database.
