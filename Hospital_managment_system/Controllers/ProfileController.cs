@@ -16,35 +16,39 @@ namespace Hospital_managment_system.Controllers
     [Authorize]
     public class ProfileController : Controller
     {
-        private IRepository repo;
+        private IDoctorsRepository doctroRepo;
         private UserManager<User> userMgr;
+        private IPatientRepository patientRepo;
+        private IUserRepository userRepo;
 
-        public ProfileController(IRepository repo, UserManager<User> userMgr)
+        public ProfileController(IPatientRepository patientRepo, IDoctorsRepository doctorRepo, IUserRepository userRepo, UserManager<User> userMgr)
         {
-            this.repo = repo;
+            this.doctroRepo = doctorRepo;
             this.userMgr = userMgr;
+            this.patientRepo = patientRepo;
+            this.userRepo = userRepo;
         }
 
         //This action returns profile of current user
         public async Task<IActionResult> Profile()
         {
-            var user = await repo.GetUserByUserNameAsync(User.Identity.Name);
+            var user = await userRepo.GetUserByUserNameAsync(User.Identity.Name);
             var role = (await userMgr.GetRolesAsync(user))?.FirstOrDefault();
             if(role == "Doctor")
             {
-                var doctor = repo.GetDoctorByUserNameAsync(User.Identity.Name);
+                var doctor = doctroRepo.GetDoctorByUserNameAsync(User.Identity.Name);
 
                 return View("DoctorProfile", new Tuple<Doctor, DoctorEditViewModel>(await doctor, new DoctorEditViewModel()));
             }
             else if(role == "Patient")
             {
-                var patient = repo.GetPatientByUserName(User.Identity.Name);
+                var patient = patientRepo.GetPatientByUserName(User.Identity.Name);
                 patient.Consultations = patient.Consultations.OrderByDescending(x => x.Time).ToList();
                 return View("PatientProfile", new Tuple<Patient, ConsultationViewModel>(patient, new ConsultationViewModel()));
             }
             else if(role == "Admin")
             {
-                return View("AdminProfile", new Tuple<User, IEnumerable<Doctor>>(user, await repo.GetAllDoctorsAsync()));
+                return View("AdminProfile", new Tuple<User, IEnumerable<Doctor>>(user, await doctroRepo.GetAllDoctorsAsync()));
             }
             else
             {
@@ -56,10 +60,10 @@ namespace Hospital_managment_system.Controllers
         [HttpGet]
         public async Task<IActionResult> DoctorProfile(string id)
         {
-            var doctor = await repo.GetDoctorByIdAsync(id);
+            var doctor = await doctroRepo.GetDoctorByIdAsync(id);
             if (User.IsInRole("Patient"))
             {
-                var patient = repo.GetPatientByUserName(User.Identity.Name);
+                var patient = patientRepo.GetPatientByUserName(User.Identity.Name);
                 if (patient.DoctorId != doctor.Id)
                 {
                     return new RedirectResult("/Denied");
@@ -72,12 +76,12 @@ namespace Hospital_managment_system.Controllers
         [HttpGet]
         public async Task<IActionResult> PatientProfile(string id)
         {
-            var patient = await repo.GetPatientByIdAsync(id);
+            var patient = await patientRepo.GetPatientByIdAsync(id);
             patient.Consultations = patient.Consultations.OrderByDescending(x => x.Time).ToList();
 
             if (User.IsInRole("Doctor"))
             {
-                var doctor = await repo.GetDoctorByUserNameAsync(User.Identity.Name);
+                var doctor = await doctroRepo.GetDoctorByUserNameAsync(User.Identity.Name);
                 if (!doctor.Patients.Contains(patient))
                 {
                     return new RedirectResult("/Denied");
@@ -91,8 +95,8 @@ namespace Hospital_managment_system.Controllers
         [HttpPost]
         public async Task<IActionResult> PatientNewConsultation([Bind(Prefix = "Item2")]ConsultationViewModel vm)
         {
-            var doctor = await repo.GetDoctorByUserNameAsync(User.Identity.Name);
-            var patient = await repo.GetPatientByIdAsync(vm.PatientId);
+            var doctor = await doctroRepo.GetDoctorByUserNameAsync(User.Identity.Name);
+            var patient = await patientRepo.GetPatientByIdAsync(vm.PatientId);
             if (!doctor.Patients.Contains(patient))
             {
                 return new RedirectResult("/Denied");
@@ -116,8 +120,8 @@ namespace Hospital_managment_system.Controllers
 
             patient.Consultations = patient.Consultations.OrderByDescending(x => x.Time).ToList();
 
-            repo.UpdatePatient(patient);
-            await repo.SaveChangesAsync();
+            patientRepo.UpdatePatient(patient);
+            await doctroRepo.SaveChangesAsync();
 
             return PartialView("PatientHistory", patient);
         }
@@ -127,11 +131,11 @@ namespace Hospital_managment_system.Controllers
         [HttpPost]
         public async Task<IActionResult> DoctorEdit([Bind(Prefix = "Item2")]DoctorEditViewModel vm)
         {
-            var doctor = await repo.GetDoctorByIdAsync(vm.Id);
+            var doctor = await doctroRepo.GetDoctorByIdAsync(vm.Id);
             doctor.About = vm.About;
 
-            repo.UpdateDoctor(doctor);
-            await repo.SaveChangesAsync();
+            doctroRepo.UpdateDoctor(doctor);
+            await doctroRepo.SaveChangesAsync();
 
             return new RedirectResult(vm.CurrentLink);
         }

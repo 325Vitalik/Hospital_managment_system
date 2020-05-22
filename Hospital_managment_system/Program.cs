@@ -37,7 +37,7 @@ namespace Hospital_managment_system
                 roleMgr.CreateAsync(doctorRole).GetAwaiter().GetResult();
                 roleMgr.CreateAsync(patientRole).GetAwaiter().GetResult();
             }
-            if (!ctx.Users.Any(u => u.UserName == "admin"))
+            if (!ctx.Users.Any())
             {
                 //add admin user
                 var adminUser = new User()

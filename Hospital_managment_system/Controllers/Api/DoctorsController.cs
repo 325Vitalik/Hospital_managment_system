@@ -17,11 +17,11 @@ namespace Hospital_managment_system.Controllers.Api
     [ApiController]
     public class DoctorsController : ControllerBase
     {
-        private IRepository repo;
+        private IDoctorsRepository repo;
         private SignInManager<User> signInMgr;
         private UserManager<User> userMgr;
 
-        public DoctorsController(IRepository repo, SignInManager<User> signInManager, UserManager<User> userMgr)
+        public DoctorsController(IDoctorsRepository repo, SignInManager<User> signInManager, UserManager<User> userMgr)
         {
             this.repo = repo;
             this.signInMgr = signInManager;

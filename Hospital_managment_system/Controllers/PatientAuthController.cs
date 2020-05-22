@@ -19,19 +19,19 @@ namespace Hospital_managment_system.Controllers
     {
         private SignInManager<User> signInManager;
         private UserManager<User> userMgr;
-        private IRepository repo;
+        private IDoctorsRepository doctorRepo;
 
-        public PatientAuthController(SignInManager<User> signInManager, UserManager<User> userMgr, IRepository repo)
+        public PatientAuthController(SignInManager<User> signInManager, UserManager<User> userMgr, IDoctorsRepository repo)
         {
             this.signInManager = signInManager;
             this.userMgr = userMgr;
-            this.repo = repo;
+            this.doctorRepo = repo;
         }
 
         [HttpGet]
         public IActionResult SignUp()
         {
-            ViewBag.Doctors = repo.GetAllDoctors();
+            ViewBag.Doctors = doctorRepo.GetAllDoctors();
             return View(new PatientSignUpViewModel());
         }
 
@@ -40,7 +40,7 @@ namespace Hospital_managment_system.Controllers
         {
             if (ModelState.IsValid)
             {
-                var doctor = await repo.GetDoctorByUserNameAsync(User.Identity.Name);
+                var doctor = await doctorRepo.GetDoctorByUserNameAsync(User.Identity.Name);
                 var patient = new Patient()
                 {
                     UserName = vm.Email,

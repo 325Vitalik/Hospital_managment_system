@@ -12,9 +12,9 @@ namespace Hospital_managment_system.Controllers.Api
     [ApiController]
     public class PatientsController : ControllerBase
     {
-        private IRepository repo;
+        private IPatientRepository repo;
 
-        public PatientsController(IRepository repo)
+        public PatientsController(IPatientRepository repo)
         {
             this.repo = repo;
         }

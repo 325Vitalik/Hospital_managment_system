@@ -13,7 +13,7 @@
                     @consultation.Header
                 </div>
                 <div class="default_text">
-                    @consultation.Description
+                    @Html.Raw(@consultation.Description)
                 </div>
                 <div class="small_text">@consultation.Time</div>
             </div>

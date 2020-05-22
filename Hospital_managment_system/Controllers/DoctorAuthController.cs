@@ -19,9 +19,9 @@ namespace Hospital_managment_system.Controllers
     {
         private SignInManager<User> signInManager;
         private UserManager<User> userMgr;
-        private IRepository repo;
+        private IDoctorsRepository repo;
 
-        public DoctorAuthController(SignInManager<User> signInManager, UserManager<User> userMgr, IRepository repo)
+        public DoctorAuthController(SignInManager<User> signInManager, UserManager<User> userMgr, IDoctorsRepository repo)
         {
             this.signInManager = signInManager;
             this.userMgr = userMgr;

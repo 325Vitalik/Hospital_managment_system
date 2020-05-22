@@ -12,14 +12,14 @@ namespace Hospital_managment_system.Controllers
 {
     public class HomeController : Controller
     {
-        private IRepository repo;
-        public HomeController(IRepository repo)
+        private IPostRepository postRepo;
+        public HomeController(IPostRepository postRepo)
         {
-            this.repo = repo;
+            this.postRepo = postRepo;
         }
         public IActionResult Index()
         {
-            var posts = repo.GetAllPosts();
+            var posts = postRepo.GetAllPosts();
 
             return View(posts);
         }

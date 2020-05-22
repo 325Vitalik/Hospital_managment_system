@@ -39,7 +39,10 @@ namespace Hospital_managment_system
                     options.Password.RequiredLength = 8;
                 }).AddEntityFrameworkStores<HospitalDbContext>();
 
-            services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IDoctorsRepository, DoctorRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IPatientRepository, PatientRepository>();
+            services.AddTransient<IPostRepository, PostRepository>();
 
             services.ConfigureApplicationCookie(options =>
             {

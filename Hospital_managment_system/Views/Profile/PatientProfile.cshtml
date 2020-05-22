@@ -13,7 +13,7 @@
         <h4>Chamber: @Model.Item1.Chamber</h4>
     </div>
     <div class="sub_header">
-        Doctor: <a asp-controller="Profile" asp-action="DoctorProfile" asp-route-id="@Model.Item1.DoctorId">@Model.Item1.FirstName @Model.Item1.LastName</a>
+        Doctor: <a asp-controller="Profile" asp-action="DoctorProfile" asp-route-id="@Model.Item1.DoctorId">@Model.Item1.Doctor.FirstName @Model.Item1.Doctor.LastName</a>
     </div>
 </div>
 

@@ -14,13 +14,13 @@ namespace Hospital_managment_system.Controllers
     {
         private SignInManager<User> signInManager;
         private UserManager<User> userMgr;
-        private IRepository repo;
+        private IUserRepository userRepo;
 
-        public AuthController(SignInManager<User> signInManager, UserManager<User> userMgr, IRepository repo)
+        public AuthController(SignInManager<User> signInManager, UserManager<User> userMgr, IUserRepository userRepo)
         {
             this.signInManager = signInManager;
             this.userMgr = userMgr;
-            this.repo = repo;
+            this.userRepo = userRepo;
         }
 
         //Logining
@@ -36,7 +36,7 @@ namespace Hospital_managment_system.Controllers
             if (ModelState.IsValid)
             {
                 //TODO: Написати перевірки
-                var user = repo.GetUserByUserNameAsync(vm.Email);
+                var user = userRepo.GetUserByUserNameAsync(vm.Email);
                 var result = await signInManager.PasswordSignInAsync(await user, vm.Password, false, false);
                 if (result == null) return View(vm);
                 return RedirectToAction("Index", "Home");

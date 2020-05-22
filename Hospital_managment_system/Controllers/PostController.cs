@@ -13,17 +13,17 @@ namespace Hospital_managment_system.Controllers
     [Route("Post")]
     public class PostController : Controller
     {
-        private IRepository repo;
+        private IPostRepository postRepo;
 
-        public PostController(IRepository repo)
+        public PostController(IPostRepository repo)
         {
-            this.repo = repo;
+            this.postRepo = repo;
         }
 
         [HttpGet]
         public async Task<IActionResult> Post(long id)
         {
-            var post = repo.GetPostByIdAsync(id);
+            var post = postRepo.GetPostByIdAsync(id);
             return View(await post);
         }
 
@@ -44,8 +44,8 @@ namespace Hospital_managment_system.Controllers
                 Body = vm.Body,
                 Created = DateTime.Now
             };
-            repo.addPost(post);
-            await repo.SaveChangesAsync();
+            postRepo.AddPost(post);
+            await postRepo.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
     }
